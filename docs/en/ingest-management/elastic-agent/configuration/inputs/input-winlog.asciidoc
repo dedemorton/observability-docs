@@ -1,0 +1,372 @@
+:input-type: winlog
+
+:vista_and_newer: This option is only available on operating systems +
+  supporting the Windows Event Log API (Microsoft Windows Vista and newer).
+
+[[winlog-input]]
+== Winlog input
+
+++++
+<titleabbrev>Winlog</titleabbrev>
+++++
+
+Configure the `winlog` input to read messages from Microsoft Windows
+Event Channels.
+
+To configure this input, specify a `name` of the Microsof Windows
+Event Channel to subscribe to.
+
+You can get a list of available event logs by running `Get-WinEvent
+-ListLog` in PowerShell.  Most channels are tied to specific event
+publishers. Here is an example showing how to list all channels using
+PowerShell.
+
+[source,sh]
+--------------------------------------------------------------------------------
+PS C:\> Get-WinEvent -ListLog * | Format-List -Property LogName
+LogName : Application
+LogName : HardwareEvents
+LogName : Internet Explorer
+LogName : Key Management Service
+LogName : Security
+LogName : System
+LogName : Windows PowerShell
+LogName : ForwardedEvents
+LogName : Microsoft-Management-UI/Admin
+LogName : Microsoft-Rdms-UI/Admin
+LogName : Microsoft-Rdms-UI/Operational
+LogName : Microsoft-Windows-Windows Firewall With Advanced Security/Firewall
+...
+--------------------------------------------------------------------------------
+
+You must specify the full name of the channel in the configuration
+file.  To read events from an archived `.evtx` file you can specify
+the `name` as the absolute path (it cannot be relative) to the file.
+
+Example configuration:
+[source,yaml]
+----
+name: Application
+----
+
+The `winlog` input supports the following settings, grouped by category.
+Most of these settings have sensible defaults that allow you to run {agent}
+with minimal configuration.
+
+<<input-winlog-commonly-used-settings>>::
+
+<<input-winlog-experimental-settings>>::
+
+[[input-winlog-commonly-used-settings]]
+=== Commonly used settings
+
+[cols="2*<a"]
+|===
+| Settings | Description
+
+
+
+
+
+
+include::input-shared-settings.asciidoc[tag=enabled-setting]
+
+// tag::event_id-setting
+|
+[id="input-{input-type}-event_id-setting"]
+`event_id`
+
+| (list) An include and exclude list of event IDs. The value is a comma-separated list. The
+accepted values are single event IDs to include (e.g. 4624), a range of event
+IDs to include (e.g. 4700-4800), and single event IDs to exclude (e.g. -4735).
+*{vista_and_newer}*
+
+Example:
+
+[source,yaml]
+----
+name: Security
+event_id: 4624, 4625, 4700-4800, -4735
+----
+
+[WARNING]
+=======================================
+If you specify more that 22 event IDs to include or 22 event IDs to exclude,
+Windows will prevent {agent} from reading the event log because it limits the
+number of conditions that can be used in an event log query. If this occurs a similar
+warning as shown below will be logged by {agent}, and it will continue
+processing data from other event logs. For more information, see
+https://support.microsoft.com/en-us/kb/970453.
+
+`WARN EventLog[Application] Open() error. No events will be read from this
+source. The specified query is invalid.`
+
+If you have more than 22 event IDs, you can workaround this Windows limitation
+by using a drop_event[drop-event] processor to do the filtering after
+{agent} has received the events from Windows. The filter shown below is
+equivalent to `event_id: 903, 1024, 4624` but can be expanded beyond 22
+event IDs.
+
+[source,yaml]
+----
+name: Security
+processors:
+  - drop_event.when.not.or:
+    - equals.winlog.event_id: 903
+    - equals.winlog.event_id: 1024
+    - equals.winlog.event_id: 4624
+----
+
+=======================================
+// end::event_id-setting
+
+include::input-shared-settings.asciidoc[tag=fields-setting]
+
+// tag::forwarded-setting
+|
+[id="input-{input-type}-forwarded-setting"]
+`forwarded`
+
+| (boolean) A flag to indicate that the log contains only events collected from
+remote hosts using the Windows Event Collector. The value defaults to true for
+the ForwardedEvents log and false for any other log. *{vista_and_newer}*
+
+This settings allows {agent} to optimize reads for forwarded events that are
+already rendered. When the value is true {agent} does not attempt to render
+the event using message files from the host computer. The Windows Event
+Collector subscription should be configured to use the "RenderedText" format
+(this is the default) to ensure that the events are distributed with messages
+and descriptions.
+
+Example:
+
+[source,yaml]
+----
+name: Application
+forwarded: true
+----
+
+// end::forwarded-setting
+
+// tag::ignore_older-setting
+|
+[id="input-{input-type}-ignore_older-setting"]
+`ignore_older`
+
+| (string) If this option is specified, {agent} filters events that
+are older than the specified amount of time. Valid time units are
+"ns", "us" (or "µs"), "ms", "s", "m", "h". This option is useful when
+you are beginning to monitor an event log that contains older records
+that you would like to ignore. This field is optional.
+
+Example:
+
+[source,yaml]
+----
+name: Application
+ignore_older: 168h
+----
+
+// end::ignore_older-setting
+
+// tag::include_xml-setting
+|
+[id="input-{input-type}-include_xml-setting"]
+`include_xml`
+
+| (boolean) Controls if the raw XML representation of an event is
+included in the data sent by {agent}.
+*{vista_and_newer}*
+
+The XML representation of the event is useful for troubleshooting purposes. The
+data in the fields reported by {agent} can be compared to the data in the XML
+to diagnose problems.
+
+Example:
+
+[source,yaml]
+----
+name: Application
+include_xml: true
+----
+
+*Default:* false
+
+// end::include_xml-setting
+
+
+include::input-shared-settings.asciidoc[tag=index-setting]
+
+include::input-shared-settings.asciidoc[tag=keep_null-setting]
+
+// tag::level-setting
+|
+[id="input-{input-type}-level-setting"]
+`level`
+
+| (list) A list of event levels to include. The value is a comma-separated list of
+levels. *{vista_and_newer}*
+
+[horizontal]
+.Levels and Values
+critical, crit:: 1
+error, err:: 2
+warning, warn:: 3
+information, info:: 0 or 4
+verbose:: 5
+
+Example:
+
+[source,yaml]
+----
+name: Security
+level: critical, error, warning
+----
+
+// end::level-setting
+
+// tag::no_more_events-setting
+|
+[id="input-{input-type}-no_more_events-setting"]
+`no_more_events`
+
+| (string) The action that the event log reader should take when it
+receives a signal from Windows that there are no more events to
+read. It can either `wait` for more events to be written (the default
+behavior) or it can `stop`. The overall {agent} process will stop when
+all of the individual event log readers have
+stopped. *{vista_and_newer}*
+
+Setting `no_more_events` to `stop` is useful when reading from archived event
+log files where you want to read the whole file then exit.
+
+Example:
+
+[source,yaml]
+----
+name: Application
+no_more_events: stop
+----
+
+*Default:* wait
+
+// end::no_more_events-setting
+
+include::input-shared-settings.asciidoc[tag=processors-setting]
+
+// tag::provider-setting
+|
+[id="input-{input-type}-provider-setting"]
+`provider`
+
+| (list) A list of providers (source names) to include. The value is a YAML list.
+*{vista_and_newer}*
+
+Example:
+
+[source,yaml]
+----
+name: Application
+provider:
+  - Application Error
+  - Application Hang
+  - Windows Error Reporting
+  - EMET
+----
+
+You can obtain a list of providers associated with a log by using PowerShell.
+Here is an example showing the providers associated with the Security log.
+
+[source,sh]
+----
+PS C:\> (Get-WinEvent -ListLog Security).ProviderNames
+DS
+LSA
+SC Manager
+Security
+Security Account Manager
+ServiceModel 4.0.0.0
+Spooler
+TCP/IP
+VSSAudit
+Microsoft-Windows-Security-Auditing
+Microsoft-Windows-Eventlog
+----
+
+// end::provider-setting
+
+include::input-shared-settings.asciidoc[tag=tags-setting]
+
+
+|===
+
+[[input-winlog-experimental-settings]]
+=== Experimental settings
+
+[cols="2*<a"]
+|===
+| Settings | Description
+
+// tag::api-setting
+|
+[id="input-{input-type}-api-setting"]
+`api`
+
+| experimental[]
+
+(string) This selects the event log reader implementation that is used
+to read events from the Windows APIs. You should only set this option
+when testing experimental features. When the value is set to
+`wineventlog-experimental` {agent} will replace the default event log
+reader with the experimental implementation.  We are evaluating this
+implementation to see if it can provide increased performance and
+reduce CPU usage. *{vista_and_newer}*
+
+Example:
+
+[source,yaml]
+----
+name: Application
+api: wineventlog-experimental
+----
+
+There are a few notable differences in the events:
+
+* Events that contained data under `winlog.user_data` will now have it under
+  `winlog.event_data`.
+* Setting `include_xml: true` has no effect.
+
+// end::api-setting
+
+// tag::batch_read_size-setting
+|
+[id="input-{input-type}-batch_read_size-setting"]
+`batch_read_size`
+
+| experimental[]
+
+(int) The maximum number of event log records to read from the Windows
+API in a single batch. The default batch size is 100. Most Windows
+versions return an error if the value is larger than
+1024. *{vista_and_newer}*
+
+{agent} starts a goroutine (a lightweight thread) to read from each
+individual event log. The goroutine reads a batch of event log records
+using the Windows API, applies any processors to the events, publishes
+them to the configured outputs, and waits for an acknowledgement from
+the outputs before reading additional event log records.
+
+Example:
+
+[source,yaml]
+----
+name: Application
+batch_read_size: 512
+----
+
+*Default:* 100
+
+// end::batch_read_size-setting
+
+|===
+:input-type!:
