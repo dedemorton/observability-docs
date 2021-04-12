@@ -1,8 +1,5 @@
 :input-type: winlog
 
-:vista_and_newer: This option is only available on operating systems +
-  supporting the Windows Event Log API (Microsoft Windows Vista and newer).
-
 [[winlog-input]]
 == Winlog input
 
@@ -39,9 +36,11 @@ LogName : Microsoft-Windows-Windows Firewall With Advanced Security/Firewall
 ...
 --------------------------------------------------------------------------------
 
+Another option is to use the GUI `Event Viewer` application to
+discover the channel names.
+
 You must specify the full name of the channel in the configuration
-file.  To read events from an archived `.evtx` file you can specify
-the `name` as the absolute path (it cannot be relative) to the file.
+file.
 
 Example configuration:
 [source,yaml]
@@ -79,7 +78,6 @@ include::input-shared-settings.asciidoc[tag=enabled-setting]
 | (list) An include and exclude list of event IDs. The value is a comma-separated list. The
 accepted values are single event IDs to include (e.g. 4624), a range of event
 IDs to include (e.g. 4700-4800), and single event IDs to exclude (e.g. -4735).
-*{vista_and_newer}*
 
 Example:
 
@@ -129,7 +127,7 @@ include::input-shared-settings.asciidoc[tag=fields-setting]
 
 | (boolean) A flag to indicate that the log contains only events collected from
 remote hosts using the Windows Event Collector. The value defaults to true for
-the ForwardedEvents log and false for any other log. *{vista_and_newer}*
+the ForwardedEvents log and false for any other log.
 
 This settings allows {agent} to optimize reads for forwarded events that are
 already rendered. When the value is true {agent} does not attempt to render
@@ -176,7 +174,6 @@ ignore_older: 168h
 
 | (boolean) Controls if the raw XML representation of an event is
 included in the data sent by {agent}.
-*{vista_and_newer}*
 
 The XML representation of the event is useful for troubleshooting purposes. The
 data in the fields reported by {agent} can be compared to the data in the XML
@@ -194,9 +191,6 @@ include_xml: true
 
 // end::include_xml-setting
 
-
-include::input-shared-settings.asciidoc[tag=index-setting]
-
 include::input-shared-settings.asciidoc[tag=keep_null-setting]
 
 // tag::level-setting
@@ -205,7 +199,7 @@ include::input-shared-settings.asciidoc[tag=keep_null-setting]
 `level`
 
 | (list) A list of event levels to include. The value is a comma-separated list of
-levels. *{vista_and_newer}*
+levels.
 
 [horizontal]
 .Levels and Values
@@ -235,7 +229,7 @@ receives a signal from Windows that there are no more events to
 read. It can either `wait` for more events to be written (the default
 behavior) or it can `stop`. The overall {agent} process will stop when
 all of the individual event log readers have
-stopped. *{vista_and_newer}*
+stopped.
 
 Setting `no_more_events` to `stop` is useful when reading from archived event
 log files where you want to read the whole file then exit.
@@ -260,7 +254,6 @@ include::input-shared-settings.asciidoc[tag=processors-setting]
 `provider`
 
 | (list) A list of providers (source names) to include. The value is a YAML list.
-*{vista_and_newer}*
 
 Example:
 
@@ -320,7 +313,7 @@ when testing experimental features. When the value is set to
 `wineventlog-experimental` {agent} will replace the default event log
 reader with the experimental implementation.  We are evaluating this
 implementation to see if it can provide increased performance and
-reduce CPU usage. *{vista_and_newer}*
+reduce CPU usage.
 
 Example:
 
@@ -348,7 +341,7 @@ There are a few notable differences in the events:
 (int) The maximum number of event log records to read from the Windows
 API in a single batch. The default batch size is 100. Most Windows
 versions return an error if the value is larger than
-1024. *{vista_and_newer}*
+1024.
 
 {agent} starts a goroutine (a lightweight thread) to read from each
 individual event log. The goroutine reads a batch of event log records
