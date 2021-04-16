@@ -48,25 +48,75 @@ Example configuration:
 name: Application
 ----
 
-The `winlog` input supports the following settings, grouped by category.
+The `winlog` input supports the following settings, in alphabetical order.
 Most of these settings have sensible defaults that allow you to run {agent}
 with minimal configuration.
 
-<<input-winlog-commonly-used-settings>>::
+<<input-winlog-settings>>::
 
-<<input-winlog-experimental-settings>>::
-
-[[input-winlog-commonly-used-settings]]
-=== Commonly used settings
+[[input-winlog-settings]]
+=== Winlog settings
 
 [cols="2*<a"]
 |===
 | Settings | Description
 
+// tag::api-setting
+|
+[id="input-{input-type}-api-setting"]
+`api`
 
+| (string) This selects the event log reader implementation that is used
+to read events from the Windows APIs. You should only set this option
+when testing experimental features. When the value is set to
+`wineventlog-experimental` {agent} will replace the default event log
+reader with the experimental implementation.  We are evaluating this
+implementation to see if it can provide increased performance and
+reduce CPU usage.
 
+Example:
 
+[source,yaml]
+----
+name: Application
+api: wineventlog-experimental
+----
 
+There are a few notable differences in the events:
+
+* Events that contained data under `winlog.user_data` will now have it under
+  `winlog.event_data`.
+* Setting `include_xml: true` has no effect.
+
+// end::api-setting
+
+// tag::batch_read_size-setting
+|
+[id="input-{input-type}-batch_read_size-setting"]
+`batch_read_size`
+
+| (int) The maximum number of event log records to read from the Windows
+API in a single batch. The default batch size is 100. Most Windows
+versions return an error if the value is larger than
+1024.
+
+{agent} starts a goroutine (a lightweight thread) to read from each
+individual event log. The goroutine reads a batch of event log records
+using the Windows API, applies any processors to the events, publishes
+them to the configured outputs, and waits for an acknowledgement from
+the outputs before reading additional event log records.
+
+Example:
+
+[source,yaml]
+----
+name: Application
+batch_read_size: 512
+----
+
+*Default:* 100
+
+// end::batch_read_size-setting
 
 include::input-shared-settings.asciidoc[tag=enabled-setting]
 
@@ -289,77 +339,6 @@ Microsoft-Windows-Eventlog
 // end::provider-setting
 
 include::input-shared-settings.asciidoc[tag=tags-setting]
-
-
-|===
-
-[[input-winlog-experimental-settings]]
-=== Experimental settings
-
-[cols="2*<a"]
-|===
-| Settings | Description
-
-// tag::api-setting
-|
-[id="input-{input-type}-api-setting"]
-`api`
-
-| experimental[]
-
-(string) This selects the event log reader implementation that is used
-to read events from the Windows APIs. You should only set this option
-when testing experimental features. When the value is set to
-`wineventlog-experimental` {agent} will replace the default event log
-reader with the experimental implementation.  We are evaluating this
-implementation to see if it can provide increased performance and
-reduce CPU usage.
-
-Example:
-
-[source,yaml]
-----
-name: Application
-api: wineventlog-experimental
-----
-
-There are a few notable differences in the events:
-
-* Events that contained data under `winlog.user_data` will now have it under
-  `winlog.event_data`.
-* Setting `include_xml: true` has no effect.
-
-// end::api-setting
-
-// tag::batch_read_size-setting
-|
-[id="input-{input-type}-batch_read_size-setting"]
-`batch_read_size`
-
-| experimental[]
-
-(int) The maximum number of event log records to read from the Windows
-API in a single batch. The default batch size is 100. Most Windows
-versions return an error if the value is larger than
-1024.
-
-{agent} starts a goroutine (a lightweight thread) to read from each
-individual event log. The goroutine reads a batch of event log records
-using the Windows API, applies any processors to the events, publishes
-them to the configured outputs, and waits for an acknowledgement from
-the outputs before reading additional event log records.
-
-Example:
-
-[source,yaml]
-----
-name: Application
-batch_read_size: 512
-----
-
-*Default:* 100
-
-// end::batch_read_size-setting
 
 |===
 :input-type!:
