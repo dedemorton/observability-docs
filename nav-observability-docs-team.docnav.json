@@ -19,19 +19,20 @@
         "category": "People",
         "items": [
           { "id": "odtTeamwork" },
-
+          { "id": "odtTeamwork" },
         ]
       },
       {
         "category": "Processes",
         "items": [
           { "id": "odtPlanningDocs" },
-
+          { "id": "odtPlanningDocs" },
         ]
       },
       {
         "category": "Projects",
         "items": [
+          { "id": "odtContentAudit" },
           { "id": "odtContentAudit" },
         ]
       },
@@ -39,11 +40,13 @@
         "category": "Resources",
         "items": [
           { "id": "odtDocsWiki" },
+          { "id": "odtDocsWiki" },
         ]
       },
       {
         "category": "FAQ",
         "items": [
+          { "id": "odtWhyFAQ" },
           { "id": "odtWhyFAQ" },
         ]
       }
