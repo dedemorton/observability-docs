@@ -1,7 +1,7 @@
 {
     "mission": "Observability Docs",
     "id": "observabilityDocs",
-    "landingPageId": "meetTheTeam",
+    "landingPageId": "odtMeetTheTeam",
     "icon": "logoObservability",
     "description": "Meet the Observability Documentation Team, find out how we work, and get started contributing to Observability documentation.",
     "items": [
@@ -19,20 +19,14 @@
         "category": "People",
         "items": [
           { "id": "odtTeamwork" },
-          { "id": "odtHiring" },
-          { "id": "odtOnboarding" },
-          { "id": "odtLearningDevelopment" },
+
         ]
       },
       {
         "category": "Processes",
         "items": [
           { "id": "odtPlanningDocs" },
-          { "id": "odtWritingDocs" },
-          { "id": "odtEditingDocs" },
-          { "id": "odtBuildingDocs" },
-          { "id": "odtReleasingDocs" },
-          { "id": "odtUserFeedback" },
+
         ]
       },
       {
@@ -44,13 +38,13 @@
       {
         "category": "Resources",
         "items": [
-          { "id": "designGuidelines" },
+          { "id": "odtDocsWiki" },
         ]
-      }
+      },
       {
         "category": "FAQ",
         "items": [
-          { "id": "odtWhyFAQ" },      
+          { "id": "odtWhyFAQ" },
         ]
       }
     ]
