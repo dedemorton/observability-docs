@@ -1,0 +1,57 @@
+{
+    "mission": "Observability Docs",
+    "id": "observabilityDocs",
+    "landingPageId": "meetTheTeam",
+    "icon": "logoObservability",
+    "description": "Meet the Observability Documentation Team, find out how we work, and get started contributing to Observability documentation.",
+    "items": [
+      {
+        "category": "Overview",
+        "items": [
+          { "id": "odtMeetTheTeam" },
+          { "id": "odtOurMission" },
+          { "id": "odtHowWeWork" },
+          { "id": "odtGetInTouch" },
+          { "id": "odtGetStarted" },
+        ]
+      },
+      {
+        "category": "People",
+        "items": [
+          { "id": "odtTeamwork" },
+          { "id": "odtHiring" },
+          { "id": "odtOnboarding" },
+          { "id": "odtLearningDevelopment" },
+        ]
+      },
+      {
+        "category": "Processes",
+        "items": [
+          { "id": "odtPlanningDocs" },
+          { "id": "odtWritingDocs" },
+          { "id": "odtEditingDocs" },
+          { "id": "odtBuildingDocs" },
+          { "id": "odtReleasingDocs" },
+          { "id": "odtUserFeedback" },
+        ]
+      },
+      {
+        "category": "Projects",
+        "items": [
+          { "id": "odtContentAudit" },
+        ]
+      },
+      {
+        "category": "Resources",
+        "items": [
+          { "id": "designGuidelines" },
+        ]
+      }
+      {
+        "category": "FAQ",
+        "items": [
+          { "id": "odtWhyFAQ" },      
+        ]
+      }
+    ]
+  }
