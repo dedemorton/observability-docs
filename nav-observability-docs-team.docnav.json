@@ -1,53 +1,77 @@
 {
     "mission": "Observability Docs",
     "id": "observabilityDocs",
-    "landingPageId": "odtMeetTheTeam",
+    "landingPageId": "odtWelcome",
     "icon": "logoObservability",
     "description": "Meet the Observability Documentation Team, find out how we work, and get started contributing to Observability documentation.",
     "items": [
       {
-        "category": "Overview",
+        "label": "Overview",
         "items": [
-          { "id": "odtMeetTheTeam" },
+          { "id": "odtWelcome" },
+          { "label": "Meet the team", "id": "odtMeetTheTeam" },
           { "id": "odtOurMission" },
           { "id": "odtHowWeWork" },
           { "id": "odtGetInTouch" },
-          { "id": "odtGetStarted" },
+          { "id": "odtGetStarted" }
         ]
       },
       {
-        "category": "People",
+        "label": "People",
         "items": [
+          { "id": "odtPrinciples" },
           { "id": "odtTeamwork" },
-          { "id": "odtTeamwork" },
+          { "id": "odtHiring" },
+          { "id": "odtOnboarding" },
+          { "id": "odtLearningDevelopment" },
+          {
+            "label": "The Team",
+            "items": [
+              { "id": "odtBrandonMorelli" },
+              { "id": "odtColleenMcGinnis" },
+              { "id": "odtDeDeMorton" },
+              { "id": "odtOliverHowell" }
+            ]
+          }
         ]
       },
       {
-        "category": "Processes",
+        "label": "Processes",
         "items": [
           { "id": "odtPlanningDocs" },
-          { "id": "odtPlanningDocs" },
+          { "id": "odtWritingDocs" },
+          { "id": "odtEditingDocs" },
+          { "id": "odtBuildingDocs" },
+          { "id": "odtReleasingDocs" },
+          { "id": "odtUserFeedback" }
         ]
       },
       {
-        "category": "Projects",
+        "label": "Projects",
         "items": [
+
           { "id": "odtContentAudit" },
-          { "id": "odtContentAudit" },
+          { "id": "odtOnboarding20" },
+          { "id": "odtUserSurvey" }
+
         ]
       },
       {
-        "category": "Resources",
+        "label": "Resources",
         "items": [
+
+          { "id": "odtProjectBoard" },
+          { "id": "odtRepositories" },
           { "id": "odtDocsWiki" },
-          { "id": "odtDocsWiki" },
+          { "id": "odtWritingGuidelines" }
+
         ]
       },
       {
-        "category": "FAQ",
+        "label": "FAQ",
         "items": [
-          { "id": "odtWhyFAQ" },
-          { "id": "odtWhyFAQ" },
+          { "label": "Why is there an FAQ section?", "id": "odtWhyFAQ" },
+          { "id": "odtFAQEditContent" }
         ]
       }
     ]
