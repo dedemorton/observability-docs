@@ -63,8 +63,8 @@
           { "id": "odtProjectBoard" },
           { "id": "odtRepositories" },
           { "id": "odtDocsWiki" },
-          { "id": "odtWritingGuidelines" }
-
+          { "id": "odtWritingGuidelines" },
+          { "label": "Setting up this Docs System", "id": "devAddDocs"}
         ]
       },
       {
