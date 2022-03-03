@@ -62,7 +62,7 @@
         "label": "Resources",
         "items": [
 
-          { "label": "Github Project" "id": "odtProjectBoard" },
+          { "label": "Github Project", "id": "odtProjectBoard" },
           { "id": "odtRepositories" },
           { "id": "odtDocsWiki" },
           { "id": "odtWritingGuidelines" },
