@@ -23,7 +23,8 @@
           { "id": "odtTeamwork" },
           { "id": "odtHiring" },
           { "id": "odtOnboarding" },
-          { "id": "odtLearningDevelopment" },
+          { "id": "devCareersLearning" },
+          { "id": "devCareersSpacetime" },
           {
             "label": "The Team",
             "items": [
@@ -39,6 +40,7 @@
         "label": "Processes",
         "items": [
           { "id": "odtPlanningDocs" },
+          { "id": "odtSampleData" },
           { "id": "odtWritingDocs" },
           { "id": "odtEditingDocs" },
           { "id": "odtBuildingDocs" },
@@ -60,11 +62,12 @@
         "label": "Resources",
         "items": [
 
-          { "id": "odtProjectBoard" },
+          { "label": "Github Project", "id": "odtProjectBoard" },
           { "id": "odtRepositories" },
           { "id": "odtDocsWiki" },
           { "id": "odtWritingGuidelines" },
           { "label": "Setting up this Docs System", "id": "devAddDocs"}
+
         ]
       },
       {
