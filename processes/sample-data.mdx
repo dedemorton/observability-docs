@@ -40,9 +40,9 @@ Read more about these clusters [here](https://github.com/elastic/observability-d
 
 NOTE: This method is potentially being deprecated
 
-. Check out the version of Kibana that you want to spin up.
-. Get the [credentials](https://github.com/elastic/observability-dev/blob/main/docs/observability-clusters.md) of the matching Observability cluster. The versions must match.
-. Create a `kibana.dev.yml` file in the `config` directory and add the following:
+1. Check out the version of Kibana that you want to spin up.
+2. Get the [credentials](https://github.com/elastic/observability-dev/blob/main/docs/observability-clusters.md) of the matching Observability cluster. The versions must match.
+3. Create a `kibana.dev.yml` file in the `config` directory and add the following:
 +
 ```yml
 elasticsearch.hosts: REPLACE_ME
@@ -51,7 +51,7 @@ elasticsearch.password: REPLACE_ME
 elasticsearch.ssl.verificationMode: none
 ```
 
-. Run `nvm use`, `yarn kbn boostrap`, and `yarn start`.
+4. Run `nvm use`, `yarn kbn boostrap`, and `yarn start`.
 
 ### Prerelease artifacts
 
