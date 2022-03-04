@@ -12,15 +12,15 @@
           { "label": "Meet the team", "id": "odtMeetTheTeam" },
           { "id": "odtOurMission" },
           { "id": "odtHowWeWork" },
-          { "id": "odtGetInTouch" }
-
+          { "id": "odtGetInTouch" },
+          { "id": "odtGetStarted" }
         ]
       },
       {
         "label": "People",
         "items": [
           { "id": "odtPrinciples" },
-
+          { "id": "odtTeamwork" },
           { "id": "odtHiring" },
           { "id": "odtOnboarding" },
           { "id": "devCareersLearning" },
@@ -52,6 +52,9 @@
         "label": "Projects",
         "items": [
 
+          { "id": "odtContentAudit" },
+          { "id": "odtOnboarding20" },
+          { "id": "odtUserSurvey" }
 
         ]
       },
