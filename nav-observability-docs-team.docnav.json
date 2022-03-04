@@ -42,10 +42,10 @@
           { "id": "odtPlanningDocs" },
           { "id": "odtSampleData" },
           { "id": "odtWritingDocs" },
-          { "id": "odtEditingDocs" },
+
           { "id": "odtBuildingDocs" },
           { "id": "odtReleasingDocs" },
-          { "id": "odtUserFeedback" }
+
         ]
       },
       {
