@@ -15,3 +15,13 @@
         ```
       </DocTab>
     <DocTabs>
+
+
+    <DocTabs hasBorder>
+      <DocTab name="Get started">
+        Placeholder page for this teamspace: <DocLink id="odtGetStarted"/>.
+      </DocTab>
+      <DocTab name="Getting started">
+        A quick and dirty version of Getting Started deck mockup: <DocLink id="odtGettingStarted"/>
+      </DocTab>
+    <DocTabs>
