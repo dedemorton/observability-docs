@@ -9,4 +9,74 @@ tags:
 related:
 ---
 
-## Hello World
+## Sample data
+
+### APM integration testing
+
+To add logs and metrics to an ESS instance, you can use [`apm-integration-testing`](https://github.com/elastic/apm-integration-testing).
+Grab the APM Server URL, Secret token, and Elasticsearch URL from the Cloud console,
+and export them as environment variables:
+
+```bash
+export APM_SERVER_URL=https://dddfafafaf.apm.us-east4.gcp.elastic-cloud.com \
+export APM_SERVER_TOKEN=QTEEfSkVOFUddd5C5aJJB \
+export ES_URL=https://dddfafafaf.es.us-east4.gcp.elastic-cloud.com:9243
+```
+
+Then, spin up Opbeans at `localhost:3000` watch the data flow into ESS:
+
+```
+./scripts/compose.py start 8.0 --no-elasticsearch --no-kibana --no-apm-server \
+--with-opbeans-go --with-opbeans-java --with-opbeans-node --apm-server-url=${APM_SERVER_URL} \
+--apm-server-secret-token=${APM_SERVER_TOKEN} --opbeans-elasticsearch-url=${ES_URL} --with-elastic-agent
+```
+
+NOTE: Adding a local Elastic Agent via this method is currently broken.
+
+### Connecting to the Observability development clusters
+
+Read more about these clusters [here](https://github.com/elastic/observability-dev/blob/main/docs/observability-clusters.md).
+
+NOTE: This method is potentially being deprecated
+
+1. Check out the version of Kibana that you want to spin up.
+2. Get the [credentials](https://github.com/elastic/observability-dev/blob/main/docs/observability-clusters.md) of the matching Observability cluster. The versions must match.
+3. Create a `kibana.dev.yml` file in the `config` directory and add the following:
++
+```yml
+elasticsearch.hosts: REPLACE_ME
+elasticsearch.username: kibana_system_user
+elasticsearch.password: REPLACE_ME
+elasticsearch.ssl.verificationMode: none
+```
+
+4. Run `nvm use`, `yarn kbn boostrap`, and `yarn start`.
+
+### Prerelease artifacts
+
+Binaries for build candidates can be downloaded from the staging website. Find the relevant issue in `elastic/dev` for direct links.
+For example, the [8.1 release issue](https://github.com/elastic/dev/issues/1917).
+
+### Resources
+
+Load generators:
+
+* [Slingshot](https://github.com/elastic/slingshot) — generates mock metric data
+* [hey-apm](https://github.com/elastic/hey-apm) — APM load generator. Run with:
++
+```bash
+cd github/hey-apm
+go build .
+./hey-apm \
+  -apm-secret 8dbs9gYwpsETyOOwDm \
+  -apm-url https://my-deployment-bc4b90.apm.us-central1.gcp.cloud.es.io
+```
+
+Other demo data:
+
+* [demo.elastic.co](https://demo.elastic.co/) — read-only Kibana env with demo data
+* [eden.elastic.co](https://eden.elastic.dev/) — read-only Kibana env with demo data
+
+Lists:
+
+* [Engineering productivity tools](https://github.com/elastic/engineering-productivity)
