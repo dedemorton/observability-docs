@@ -2,3 +2,16 @@
       "type": "github",
       "location": "elastic/observability-docs-teamspace"
     }
+
+    <DocTabs hasBorder>
+      <DocTab name="First tab">
+        Content for your first tab. You can add **Markdown** syntax *and* other doc components, like <DocLink id="docsSyntax" text="this link" />.
+      </DocTab>
+      <DocTab name="Second tab">
+        Content for your second tab. Why not add a code block?
+
+        ```html
+         <p>Here is an example of some code</p>
+        ```
+      </DocTab>
+    <DocTabs>

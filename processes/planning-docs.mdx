@@ -3,10 +3,34 @@ id: odtPlanningDocs
 slug: /observability-docs/processes/planning-docs
 title: Planning docs
 image:
-description:
-date: 
+description: Great documentation starts with a good plan
+date:
 tags:
 related:
 ---
 
-## Hello World
+<DocCallOut color="warning" title="This page is under construction..." />
+
+## Overview of docs release planning
+
+The documentation team follows a similar process to the rest of Observability with a couple of changes:
+
+- We call feature freeze (FF) documentation freeze (DF).
+- Documentation iterations, freezes, etc., are two weeks after the engineering ones.
+
+The goal of documentation freeze is somewhat different than normal FF in engineering teams as we don't need to actually freeze the content. The DF is the date that the team should shift its focus from providing content for the release to testing and release closedown activities (highlights, etc.). Then at DF+3 weeks, the goal is for the team to focus on the following iteration with just some release-related activities left from the previous one.
+
+The proposed process is the same as the rest of Observability, just with the two week shift described above. This time shift enables the different teams to declare their documentation needs based on their own planning.
+
+During the call for content phase, in the planning issue, the different teams should provide the kind of collaboration they are going to need for the documentation team, using the issue template provided.
+
+## What you need to do
+
+When the Observability Docs team sends the planning email during the 'call for content' phase:
+
+1. Use our [observability-docs issue template][0] for any new support requests
+2. Add your requests to the planning issue for the release - [example issue][1]
+
+
+[0]: https://github.com/elastic/observability-docs/issues/new?assignees=&labels=Team%3ADocs&template=docs-request.md&title=%5BRequest%5D
+[1]: https://github.com/elastic/observability-dev/issues/1891
