@@ -88,6 +88,3 @@ Because {agent} is installed as an auto-starting service, it will restart
 automatically if the system is rebooted.
 
 If you run into problems, refer to <<fleet-troubleshooting>>.
-
-//TODO: Fix link to troubleshooting when we have a topic about troubleshooting for
-//stand-alone agents.
