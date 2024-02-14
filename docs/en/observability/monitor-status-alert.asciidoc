@@ -1,8 +1,15 @@
 [[monitor-status-alert]]
 = Create a monitor status rule
 
+//REVIEWERS: I no longer see the Uptime app in 8.12. But I do see this rule available under synthetics.
+//Do we want these docs to apply to synthetics instead of uptime?
+
+//TODO: This topic requires updates if we want it to apply to Synthetics. Will need to add a list of supported connectors.
+//It's confusing, though, that the list of connectors available under Settings is different than the list
+//that is available under Alerts and rules > Monitor status rule.
+
 Within the {uptime-app}, create a **Monitor Status** rule to receive notifications
-based on errors and outages. 
+based on errors and outages.
 
 . To access this page, go to **{observability}** -> **Uptime**.
 . At the top of the page, click **Alerts and rules** -> **Create rule**.
@@ -19,7 +26,7 @@ If you already have a query in the overview page search bar, it's populated here
 
 You can specify the following thresholds for your rule.
 
-|=== 
+|===
 
 | *Status check* | Receive alerts when a monitor goes down a specified number of
 times within a time range (seconds, minutes, hours, or days).
@@ -27,7 +34,7 @@ times within a time range (seconds, minutes, hours, or days).
 | *Availability* | Receive alerts when a monitor goes below a specified availability
 threshold within a time range (days, weeks, months, or years).
 
-|=== 
+|===
 
 Let's create a rule for any monitor that shows `Down` more than three times in 10 minutes.
 

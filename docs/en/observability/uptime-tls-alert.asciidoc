@@ -1,6 +1,13 @@
 [[tls-certificate-alert]]
 = Create a TLS certificate rule
 
+//REVIEWERS: I no longer see the Uptime app in 8.12. But I do see this rule available under synthetics.
+//Do we want these docs to apply to synthetics instead of uptime?
+
+//TODO: This topic requires updates if we want it to apply to Synthetics. Will need to add a list of supported connectors.
+//It's confusing, though, that the list of connectors available under Settings is different than the list
+//that is available under Alerts and rules > TLS certificate rule.
+
 Within the {uptime-app}, you can create a rule that notifies
 you when one or more of your monitors has a TLS certificate expiring
 within a specified threshold, or when it exceeds an age limit.
@@ -18,7 +25,7 @@ The threshold values for each condition are configurable on the
 
 You can specify the following thresholds for your rule.
 
-|=== 
+|===
 
 | *Expiration threshold* | The `expiration` threshold specifies when you are notified
 about certificates that are approaching expiration dates.
@@ -26,7 +33,7 @@ about certificates that are approaching expiration dates.
 | *Age limit* | The `age` threshold specifies when you are notified about certificates
 that have been valid for too long.
 
-|=== 
+|===
 
 Let's create a rule to check every 6 hours and notify us when any of the TLS certificates on sites we're monitoring are close to expiring.
 
