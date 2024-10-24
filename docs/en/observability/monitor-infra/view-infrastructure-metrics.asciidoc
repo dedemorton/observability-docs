@@ -1,13 +1,12 @@
 [[view-infrastructure-metrics]]
 = View infrastructure metrics by resource type
 
-The *Inventory* page provides a metrics-driven view of your entire infrastructure grouped by
+The *Infrastructure Inventory* provides a metrics-driven view of your entire infrastructure grouped by
 the resources you are monitoring. All monitored resources emitting
 a core set of infrastructure metrics are displayed to give you a quick view of the overall health
 of your infrastructure.
 
-To access this page from the main {kib} menu, go to
-*{observability} -> Infrastructure -> Inventory*.
+To open **Infrastructure Inventory**, find **Infrastructure** in the main menu or use the <<kibana-navigation-search,global search field>>.
 
 [role="screenshot"]
 image::images/metrics-app.png[{infrastructure-app} in {kib}]

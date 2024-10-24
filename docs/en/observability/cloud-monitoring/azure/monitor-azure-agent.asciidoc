@@ -112,10 +112,7 @@ details and forecast information, about your subscription.
 
 To add the integration:
 
-. Go to the {kib} home page and click **Add integrations**.
-+
-[role="screenshot"]
-image::images/kibana-home.png[Screenshot of the {kib} home page]
+. In the **Observability** UI, find **Integrations** in the main menu or use the <<kibana-navigation-search,global search field>>.
 
 . In the query bar, search for **Azure Billing** and select the Azure Billing
 Metrics integration to see more details about it.
