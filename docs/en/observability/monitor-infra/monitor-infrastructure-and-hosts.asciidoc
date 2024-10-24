@@ -1,7 +1,7 @@
 [[monitor-infrastructure-and-hosts]]
 = Analyze infrastructure and host metrics
 
-In the {infrastructure-app}, you can visualize infrastructure
+In the {infrastructure-app}, visualize infrastructure
 metrics to help diagnose problematic spikes, identify high resource utilization,
 automatically discover and track pods, and unify your metrics with logs and APM
 data in {es}.
@@ -10,8 +10,8 @@ Using {agent} integrations, you can ingest and analyze metrics from servers,
 Docker containers, Kubernetes orchestrations, explore and analyze application
 telemetry, and more.
 
-To analyze infrastructure and host metrics, go to the **Observability** UI.
-Find **Infrastructure** in the main menu or use the <<kibana-navigation-search,global search field>>.
+To access the {infrastructure-app},
+find **Infrastructure** in the main menu or use the <<kibana-navigation-search,global search field>>.
 
 The {infrastructure-app} provides a few different views of your data.
 

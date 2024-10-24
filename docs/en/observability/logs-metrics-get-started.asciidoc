@@ -141,7 +141,7 @@ You can hover over any visualization to adjust its settings, or click the
 
 Next, add additional integrations to the policy used by your agent.
 
-. Go back to **Integrations** page.
+. Go back to **Integrations**.
 
 . In the query bar, search for the source you want to monitor (for example, nginx) and select the integration to see more details about it.
 

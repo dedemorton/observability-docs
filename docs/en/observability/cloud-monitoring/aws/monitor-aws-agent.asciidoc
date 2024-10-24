@@ -144,7 +144,7 @@ After you get that working, you'll learn how to add S3 access logs.
 
 To add the integration:
 
-. Go to the {kib} home page and click **Add integrations**.
+. Find **Integrations** in the main menu or use the <<kibana-navigation-search,global search field>>.
 
 . In the query bar, search for **AWS** and select the AWS integration to see
 more details about it.
