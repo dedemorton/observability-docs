@@ -112,7 +112,7 @@ details and forecast information, about your subscription.
 
 To add the integration:
 
-. Find **Integrations** in the main menu or use the <<kibana-navigation-search,global search field>>.
+. Find **Integrations** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 
 . In the query bar, search for **Azure Billing** and select the Azure Billing
 Metrics integration to see more details about it.
@@ -305,7 +305,7 @@ the Azure activity log integration to ingest the logs.
 
 To add the integration:
 
-. Find **Integrations** in the main menu or use the <<kibana-navigation-search,global search field>>.
+. Find **Integrations** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 
 . In the query bar, search for **Azure activity logs** and select the Azure
 activity logs integration to see more details about it.

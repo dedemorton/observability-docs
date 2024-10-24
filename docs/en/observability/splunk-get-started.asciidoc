@@ -34,11 +34,7 @@ include::{observability-docs-root}/docs/en/observability/logs-metrics-get-starte
 [[splunk-step-one]]
 == Step 1: Add integration
 
-To open **Integrations**, find **Management** in the main menu or use the <<kibana-navigation-search,global search field>>.
-
-OR
-
-Find **Integrations** in the main menu or use the <<kibana-navigation-search,global search field>>.
+Find **Integrations** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 Search for and add the nginx integration.
 Refer to <<logs-metrics-get-started>> for detailed steps about adding integrations.
 

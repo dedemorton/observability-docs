@@ -11,7 +11,7 @@ Docker containers, Kubernetes orchestrations, explore and analyze application
 telemetry, and more.
 
 To access the {infrastructure-app},
-find **Infrastructure** in the main menu or use the <<kibana-navigation-search,global search field>>.
+find **Infrastructure** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 
 The {infrastructure-app} provides a few different views of your data.
 

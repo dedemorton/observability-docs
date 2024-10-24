@@ -38,7 +38,7 @@ integrations for new data sources, security protections, and more.
 
 In this step, add the System integration to monitor host logs and metrics.
 
-. In the **Observability** UI, find **Integrations** in the main menu or use the <<kibana-navigation-search,global search field>>.
+. Find **Integrations** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 
 . In the query bar, search for **System** and select the integration to see more
 details about it.
@@ -168,7 +168,7 @@ image::images/kibana-fleet-policies-default-with-nginx.png[{fleet} showing defau
 +
 Any {agent}s assigned to this policy will begin collecting data for the newly configured integrations.
 
-. To view the data, find **{fleet}** in the main menu or use the <<kibana-navigation-search,global search field>>.
+. To view the data, find **{fleet}** in the main menu or use the {kibana-ref}/introduction.html#kibana-navigation-search[global search field].
 
 . Click the **Data streams** tab.
 
